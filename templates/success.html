@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+verify
+{% endblock %}
+
+{% block content %}
+<div class="pythoncol-md-8 mx-auto shadow-lg p-3 mb-5 bg-white rounded ">
+    <h3 class="mt-4 text-center">Decryption successfull</h3>
+    <img src="{{ image }}" alt="">
+    {{ threshold }}
+</div>
+<div class="col-md-8 mx-auto ">
+    <a href="{% url 'secretapp:home' %}" class="btn btn-danger btn-block mt-4 px-4">Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+verify
+{% endblock %}
+
+{% block content %}
+<div class="card col-md-8 mx-auto shadow-lg p-3 mb-5 bg-white rounded ">
+    <h3 class="mt-4 text-center">Please enter the Unique String you get while encryption</h3>
+    <form action="#" method="post" class="mt-4 px-3">
+        <div class="form-group">
+            {% csrf_token %}
+            <label>Unique String</label>
+            <input type="text" name="unique_string" class="form-control" required>
+        </div>
+        <input type="submit" class="btn btn-danger">
+    </form>
+</div>
+<div class="col-md-8 mx-auto ">
+    <a href="{% url 'secretapp:home' %}" class="btn btn-danger btn-block mt-4 px-4">Back</a>
+</div>
+{% endblock %}

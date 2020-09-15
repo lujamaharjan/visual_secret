@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+vss decrypt
+{% endblock %}
+
+{% block content %}
+<div class="card col-md-8 mx-auto shadow-lg p-3 mb-5 bg-white rounded " id="form">
+    <h3 class="mt-4 text-center">Please fill the decryption details</h3>
+    <form action="#" method="post" class="mt-4 px-3" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for i in shares_num %}
+            <div class="form-group">
+                <label>Share{{ i }}</label>
+                <input type="file" name="image{{i}}" accept="image/*" required><br/>
+            </div>
+        {% endfor %}
+    <input type="submit" value="Decrypt"  class="btn btn-danger" id="decrypt">
+    </form>
+</div>
+
+    <div class="text-center mt-4" id="load">
+        <img src="{% static 'loading.gif' %}" alt="" style="width:320px">
+        <h5> Loading ...</h5>
+        <p>Please wait while processing</p>
+    </div>
+
+    <script>
+        var x = document.querySelector('#load');
+        x.style.display = 'none';
+        var y = document.querySelector('#decrypt');
+        y.addEventListener("click", function(){
+            var z = document.querySelector("#form");
+            z.style.display = "none";
+            x.style.display ="block";
+        });
+    </script>
+{% endblock %}
