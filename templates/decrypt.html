@@ -5,9 +5,9 @@ vss decrypt
 {% endblock %}
 
 {% block content %}
-<div class="card col-md-8 mx-auto shadow-lg p-3 mb-5 bg-white rounded " id="form">
+<div class="card col-md-8 mx-auto shadow-lg p-3 mb-5 bg-white rounded " id="card">
     <h3 class="mt-4 text-center">Please fill the decryption details</h3>
-    <form action="#" method="post" class="mt-4 px-3" enctype="multipart/form-data">
+    <form action="#" method="post" class="mt-4 px-3" enctype="multipart/form-data" id="form">
         {% csrf_token %}
         {% for i in shares_num %}
             <div class="form-group">
@@ -28,9 +28,9 @@ vss decrypt
     <script>
         var x = document.querySelector('#load');
         x.style.display = 'none';
-        var y = document.querySelector('#decrypt');
-        y.addEventListener("click", function(){
-            var z = document.querySelector("#form");
+        var y = document.querySelector('#form');
+        y.addEventListener("submit", function(){
+            var z = document.querySelector("#card");
             z.style.display = "none";
             x.style.display ="block";
         });

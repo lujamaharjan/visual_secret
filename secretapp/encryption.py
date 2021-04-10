@@ -4,7 +4,7 @@ import math
 
 # global variables
 list_of_cofficient = [3, 5, 7, 11, 13, 17, 19, 23]
-
+xor_key = 37
 
 # change image to matrix
 def changeImageToMatrix(imagename):
@@ -22,19 +22,21 @@ def encryption(total_Shares, threshold, pixel):
         for j in range(1, threshold):
             temp = temp + list_of_cofficient[j - 1] * int(math.pow(i + 1, j))
 
-        epixels.append(temp % 256)
+        epixels.append(temp ^ xor_key)
     return epixels
 
 
 # Decryption
 def decryption(epixel, threshold):
     dpixel = 0
+    result = map(lambda x: x ^ xor_key, epixel)
+    result = list(result)
     for i in range(1, threshold + 1):
         li = 1
         for j in range(1, threshold + 1):
             if i != j:
                 li = li * (-j / (i - j))
-        dpixel = dpixel + epixel[i - 1] * li
+        dpixel = dpixel + result[i - 1] * li
     return dpixel
 
 
